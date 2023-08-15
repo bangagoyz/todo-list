@@ -1,0 +1,30 @@
+<% day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] %>
+<% month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %>
+        <% a = new Date()%>
+<%- include("partials/header.ejs") %>
+<div class="atas">
+    <div class="judul">
+        <h1>
+            <%= day[a.getDay()] %>, <%= month[a.getMonth()] %> <%= a.getDate() %> 
+        </h1>
+    </div>
+</div>
+<div id="utama">
+    <div class="items">
+        <% if (locals.isi){ %>
+            <% for(var i=0;i<isi.length;i++){%>
+        <div class="item output">
+            <input class="checkbox" type="checkbox">
+            <label class="content"><%= isi[i] %></label>
+        </div>
+            <% } %>
+        <% } %>
+        <form class="item" action="/post" method="post">
+            <input class="input1" type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" value="<% day[a.getDay()] %>">+</button>
+        </form>
+    </div>
+</div>
+
+
+<%- include("partials/footer.ejs") %>
